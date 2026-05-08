@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apresentação — Plataforma de Gestão de Arenas de Beach Tennis</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #07090f;
+            --bg-card: #0f1320;
+            --bg-card-2: #161b2c;
+            --neon-cyan: #00e5ff;
+            --neon-green: #00ff9d;
+            --neon-purple: #a78bfa;
+            --text-primary: #f4f6fb;
+            --text-secondary: #aab2c6;
+            --text-muted: #6b7388;
+            --border: rgba(255,255,255,0.08);
+        }
+        .reveal { font-family: 'Inter', sans-serif; font-size: 28px; color: var(--text-primary); }
+        .reveal .slides { text-align: left; }
+        .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+            font-family: 'Inter', sans-serif; color: var(--text-primary);
+            text-transform: none; letter-spacing: -0.02em; font-weight: 700;
+        }
+        .reveal h1 { font-size: 2.6em; line-height: 1.1; }
+        .reveal h2 { font-size: 1.8em; line-height: 1.2; margin-bottom: 0.5em; }
+        .reveal h3 { font-size: 1.3em; color: var(--neon-cyan); margin-bottom: 0.5em; }
+        body { background: var(--bg-deep); }
+        .reveal .slide-background {
+            background: radial-gradient(ellipse at top left, #0d1424 0%, #07090f 60%);
+        }
+        .reveal section { padding: 0 40px; }
+
+        .cover { text-align: center !important; display: flex !important; flex-direction: column; justify-content: center; height: 100%; }
+        .cover .eyebrow {
+            color: var(--neon-cyan); font-size: 0.5em; font-weight: 600;
+            letter-spacing: 0.4em; text-transform: uppercase; margin-bottom: 1em;
+        }
+        .cover h1 {
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; font-size: 3em; line-height: 1.05;
+        }
+        .cover .subtitle { color: var(--text-secondary); font-size: 0.9em; font-weight: 400; margin-top: 1em; }
+
+        .badge {
+            display: inline-block; padding: 6px 14px; border-radius: 999px;
+            background: rgba(0, 229, 255, 0.08); border: 1px solid rgba(0, 229, 255, 0.3);
+            color: var(--neon-cyan); font-size: 0.55em; font-weight: 500;
+            letter-spacing: 0.05em; margin-right: 8px;
+        }
+        .badge.green { background: rgba(0, 255, 157, 0.08); border-color: rgba(0, 255, 157, 0.3); color: var(--neon-green); }
+        .badge.purple { background: rgba(167, 139, 250, 0.08); border-color: rgba(167, 139, 250, 0.3); color: var(--neon-purple); }
+
+        .card {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 24px; margin: 8px 0;
+        }
+        .card-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 1em; }
+        .card-grid.three { grid-template-columns: repeat(3, 1fr); }
+        .card-grid.four { grid-template-columns: repeat(4, 1fr); }
+        .card .icon { font-size: 1.8em; margin-bottom: 8px; }
+        .card h4 { color: var(--neon-cyan); font-size: 0.7em; font-weight: 600; margin-bottom: 6px; }
+        .card p { font-size: 0.55em; color: var(--text-secondary); line-height: 1.5; margin: 0; }
+
+        .kpi { text-align: center; padding: 20px; }
+        .kpi .value {
+            font-size: 2.4em; font-weight: 800;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-green));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            background-clip: text; line-height: 1;
+        }
+        .kpi .label {
+            font-size: 0.5em; color: var(--text-secondary); margin-top: 8px;
+            text-transform: uppercase; letter-spacing: 0.1em;
+        }
+
+        .split { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: center; }
+        .split.weighted-text { grid-template-columns: 1fr 1.2fr; }
+        .split.weighted-image { grid-template-columns: 1.2fr 1fr; }
+
+        .mockup {
+            border-radius: 14px; overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: 0 30px 60px rgba(0, 229, 255, 0.08);
+            background: var(--bg-card);
+        }
+        .mockup img { width: 100%; display: block; }
+        .mockup-placeholder {
+            aspect-ratio: 16/10; display: flex; align-items: center; justify-content: center;
+            background: linear-gradient(135deg, #0f1320, #161b2c);
+            color: var(--text-muted); font-family: 'JetBrains Mono', monospace;
+            font-size: 0.5em; text-align: center; padding: 20px;
+        }
+
+        table.compare { width: 100%; border-collapse: collapse; font-size: 0.6em; margin-top: 1em; }
+        table.compare th {
+            background: var(--bg-card-2); color: var(--neon-cyan);
+            padding: 12px 16px; text-align: left; font-weight: 600;
+            border-bottom: 1px solid var(--border);
+        }
+        table.compare td { padding: 14px 16px; border-bottom: 1px solid var(--border); color: var(--text-secondary); }
+        table.compare tr:hover td { background: rgba(0, 229, 255, 0.03); }
+        table.compare .gain { color: var(--neon-green); font-weight: 600; }
+
+        .reveal ul { list-style: none; padding-left: 0; }
+        .reveal ul li {
+            padding-left: 24px; position: relative; margin-bottom: 12px;
+            color: var(--text-secondary); font-size: 0.7em; line-height: 1.5;
+        }
+        .reveal ul li::before {
+            content: "▸"; position: absolute; left: 0;
+            color: var(--neon-cyan); font-weight: bold;
+        }
+
+        .roadmap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 1em; }
+        .phase {
+            background: var(--bg-card); border: 1px solid var(--border);
+            border-radius: 14px; padding: 22px; position: relative; overflow: hidden;
+        }
+        .phase::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--neon-cyan); }
+        .phase.p2::before { background: var(--neon-green); }
+        .phase.p3::before { background: var(--neon-purple); }
+        .phase .num { font-family: 'JetBrains Mono', monospace; font-size: 0.5em; color: var(--text-muted); margin-bottom: 4px; }
+        .phase h4 { color: var(--text-primary); font-size: 0.85em; margin-bottom: 12px; }
+        .phase ul li { font-size: 0.55em; margin-bottom: 6px; }
+
+        .section-title { text-align: center !important; display: flex !important; flex-direction: column; justify-content: center; height: 100%; }
+        .section-title .label {
+            font-family: 'JetBrains Mono', monospace; color: var(--neon-cyan);
+            font-size: 0.5em; letter-spacing: 0.4em;
+            text-transform: uppercase; margin-bottom: 1em;
+        }
+        .section-title h1 {
+            font-size: 2.2em;
+            background: linear-gradient(135deg, var(--text-primary), var(--neon-cyan));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+        }
+
+        .highlight { color: var(--neon-cyan); font-weight: 600; }
+        .highlight-green { color: var(--neon-green); font-weight: 600; }
+
+        .hero-quote {
+            font-size: 1.4em; font-weight: 300; line-height: 1.4;
+            color: var(--text-primary); border-left: 3px solid var(--neon-cyan);
+            padding-left: 24px; margin: 1em 0;
+        }
+
+        .reveal .slide-number { color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 14px; }
+
+        .profile {
+            width: 220px; height: 220px; border-radius: 50%;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-purple));
+            display: flex; align-items: center; justify-content: center;
+            font-size: 4em; font-weight: 800; color: var(--bg-deep);
+            margin: 0 auto 24px;
+            box-shadow: 0 0 80px rgba(0, 229, 255, 0.25);
+        }
+
+        small { font-size: 0.5em; color: var(--text-muted); }
+    </style>
+</head>
+<body>
+
+<div class="reveal">
+    <div class="slides">
+
+        <!-- 1. CAPA -->
+        <section class="cover">
+            <div>
+                <div class="eyebrow">Apresentação · Maio 2026</div>
+                <h1>Plataforma de Gestão<br>para Arenas de Beach Tennis</h1>
+                <div class="subtitle">
+                    Multi-arena · Financeiro inteligente · Autonomia para o aluno<br>
+                    <small>por Fernando Almeida · Head de Tecnologia e IA · Five Franchising</small>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. SOBRE MIM -->
+        <section>
+            <div class="split weighted-text">
+                <div style="text-align:center;">
+                    <div class="profile">FA</div>
+                    <h2 style="font-size:1.4em; margin-bottom:8px;">Fernando Almeida</h2>
+                    <div style="color:var(--neon-cyan); font-size:0.55em; letter-spacing:0.08em; line-height:1.5;">
+                        HEAD DE TECNOLOGIA E IA<br>
+                        <span style="color:var(--text-secondary); letter-spacing:0;">Five Franchising</span>
+                    </div>
+                </div>
+                <div>
+                    <h3>Sobre mim</h3>
+                    <p style="font-size:0.65em; color:var(--text-secondary); line-height:1.6;">
+                        Head de Tecnologia e IA na <span class="highlight">Five Franchising</span>, com mais de <span class="highlight">10 anos de marketing</span> e foco em construir produtos que conectam tecnologia, IA e resultado de negócio.
+                    </p>
+                    <p style="font-size:0.65em; color:var(--text-secondary); line-height:1.6; margin-top:12px;">
+                        Atuo da <span class="highlight-green">ideia à entrega</span>: participo de toda a concepção do projeto, da estratégia ao desenvolvimento e à operação.
+                    </p>
+                    <p style="font-size:0.65em; color:var(--text-secondary); line-height:1.6; margin-top:12px;">
+                        Lidero a área de <span class="highlight">automações e IA</span> no <span class="highlight">Networking dos Irmãos</span> — comunidade com mais de 2.000 profissionais de marketing.
+                    </p>
+                    <div style="margin-top:24px;">
+                        <span class="badge">Produto</span>
+                        <span class="badge green">IA &amp; Automação</span>
+                        <span class="badge purple">Marketing</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. TRAJETÓRIA -->
+        <section>
+            <h2>Números que falam por si</h2>
+            <div class="card-grid four">
+                <div class="kpi card">
+                    <div class="value">+100</div>
+                    <div class="label">Projetos entregues</div>
+                </div>
+                <div class="kpi card">
+                    <div class="value">+20</div>
+                    <div class="label">Projetos em operação</div>
+                </div>
+                <div class="kpi card">
+                    <div class="value">+10</div>
+                    <div class="label">Anos em marketing</div>
+                </div>
+                <div class="kpi card">
+                    <div class="value">+2k</div>
+                    <div class="label">Profissionais liderados em IA &amp; automação</div>
+                </div>
+            </div>
+            <div class="card-grid" style="margin-top:32px;">
+                <div class="card">
+                    <div class="icon">🏢</div>
+                    <h4>FIVE FRANCHISING</h4>
+                    <p>Head de Tecnologia — liderança da estratégia técnica, produtos digitais e IA aplicada à operação da rede.</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🤝</div>
+                    <h4>NETWORKING DOS IRMÃOS</h4>
+                    <p>Líder da vertical de Automações e IA na comunidade com +2.000 profissionais de marketing.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. METODOLOGIA -->
+        <section>
+            <h2>Como eu trabalho</h2>
+            <div class="card-grid three">
+                <div class="card">
+                    <h4>01 · DA IDEIA À ENTREGA</h4>
+                    <p>Participo de toda a concepção: estratégia, produto, arquitetura, desenvolvimento e operação.</p>
+                </div>
+                <div class="card">
+                    <h4>02 · MARKETING + TECNOLOGIA</h4>
+                    <p>10+ anos de marketing aliados a IA e automação — construo produtos que entendem o negócio.</p>
+                </div>
+                <div class="card">
+                    <h4>03 · FOCO EM ROI</h4>
+                    <p>Cada feature responde a uma métrica de negócio. Construo o que move o ponteiro.</p>
+                </div>
+            </div>
+            <div style="margin-top:32px;" class="hero-quote">
+                "Tecnologia bem aplicada é a que <span class="highlight-green">faz a empresa do cliente crescer</span> — não a que tem a stack mais bonita."
+            </div>
+        </section>
+
+        <!-- 5. TRANSIÇÃO -->
+        <section class="section-title">
+            <div>
+                <div class="label">Parte 02</div>
+                <h1>A solução proposta</h1>
+                <p style="color:var(--text-secondary); font-size:0.7em; margin-top:1em;">
+                    Plataforma de Gestão para Arenas de Beach Tennis
+                </p>
+            </div>
+        </section>
+
+        <!-- 6. CENÁRIO ATUAL -->
+        <section>
+            <h2>O cenário atual</h2>
+            <p style="font-size:0.7em; color:var(--text-secondary);">
+                Arenas de beach tennis operam, hoje, com uma combinação fragmentada de ferramentas:
+            </p>
+            <div class="card-grid">
+                <div class="card"><div class="icon">📋</div><h4>AGENDAMENTO</h4><p>Planilhas, cadernos físicos ou grupos de WhatsApp.</p></div>
+                <div class="card"><div class="icon">💸</div><h4>COBRANÇA</h4><p>Pix avulso, boletos manuais — sem reconciliação automática.</p></div>
+                <div class="card"><div class="icon">🔄</div><h4>REPOSIÇÕES</h4><p>Controle manual sujeito a perdas e disputas com alunos.</p></div>
+                <div class="card"><div class="icon">📊</div><h4>FINANCEIRO</h4><p>Excel sem visão consolidada quando há múltiplas arenas.</p></div>
+            </div>
+        </section>
+
+        <!-- 7. CUSTO DA FRAGMENTAÇÃO -->
+        <section>
+            <h2>O custo dessa fragmentação</h2>
+            <div class="card-grid four">
+                <div class="kpi card"><div class="value">8-15%</div><div class="label">Inadimplência sobre faturamento</div></div>
+                <div class="kpi card"><div class="value">2 dias</div><div class="label">Para fechamento financeiro mensal</div></div>
+                <div class="kpi card"><div class="value">~30%</div><div class="label">Quadras ociosas em horários reativos</div></div>
+                <div class="kpi card"><div class="value">+50%</div><div class="label">Tempo do gestor em tarefas operacionais</div></div>
+            </div>
+            <p style="font-size:0.55em; color:var(--text-muted); margin-top:1.5em; text-align:center;">
+                <em>Estimativas de mercado — a serem validadas com dados reais da sua operação.</em>
+            </p>
+        </section>
+
+        <!-- 8. VISÃO -->
+        <section class="section-title">
+            <div>
+                <div class="label">Nossa proposta</div>
+                <h1 style="font-size:1.8em;">Tornar a operação tão simples<br>quanto agendar uma aula.</h1>
+                <p style="color:var(--text-secondary); font-size:0.65em; margin-top:1.5em; max-width:800px; margin-left:auto; margin-right:auto;">
+                    Um único sistema que conecta gestão multi-arena, financeiro automatizado e
+                    autonomia do aluno em uma experiência fluida — web e mobile.
+                </p>
+            </div>
+        </section>
+
+        <!-- 9. 7 MÓDULOS -->
+        <section>
+            <h2>A plataforma em 7 módulos</h2>
+            <div class="card-grid four">
+                <div class="card"><h4>🏟️ MULTI-ARENA</h4><p>Gestão centralizada com permissões por unidade.</p></div>
+                <div class="card"><h4>💰 FINANCEIRO</h4><p>Fluxo de caixa por arena e DRE consolidado.</p></div>
+                <div class="card"><h4>👥 ALUNOS</h4><p>Cadastro, planos, presença e histórico.</p></div>
+                <div class="card"><h4>💳 COBRANÇA</h4><p>Recorrência automática via Asaas.</p></div>
+                <div class="card"><h4>📅 AGENDAMENTO</h4><p>Calendário visual por quadra.</p></div>
+                <div class="card"><h4>🔁 REPOSIÇÃO</h4><p>Crédito automático com regras configuráveis.</p></div>
+                <div class="card"><h4>📱 PORTAL ALUNO</h4><p>Self-service para agendar e pagar.</p></div>
+                <div class="card" style="background:linear-gradient(135deg, rgba(0,229,255,0.1), rgba(0,255,157,0.1)); border-color:var(--neon-cyan);">
+                    <h4 style="color:var(--neon-green);">🎯 INTEGRADO</h4><p>Tudo conversa entre si — em tempo real.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. MULTI-ARENA -->
+        <section>
+            <div class="split weighted-image">
+                <div class="mockup">
+                    <img src="images/mockup-01-dashboard-multiarena.png" alt="Dashboard Multi-Arena" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="mockup-placeholder" style="display:none;">[ MOCKUP 01<br>Dashboard Multi-Arena ]</div>
+                </div>
+                <div>
+                    <span class="badge">Módulo 01</span>
+                    <h2 style="margin-top:12px;">Gestão Multi-Arena</h2>
+                    <ul>
+                        <li>Cadastro ilimitado de arenas com regras próprias</li>
+                        <li>Dashboard consolidado com KPIs por unidade</li>
+                        <li>Permissões granulares por arena e perfil</li>
+                        <li>Comparativo de performance entre unidades</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 11. FINANCEIRO -->
+        <section>
+            <div class="split weighted-image">
+                <div>
+                    <span class="badge green">Módulo 02</span>
+                    <h2 style="margin-top:12px;">Financeiro &amp; Fluxo de Caixa</h2>
+                    <ul>
+                        <li>Fluxo de caixa diário, semanal e mensal por arena</li>
+                        <li>DRE simplificado consolidado e por unidade</li>
+                        <li>Centro de custos e categorização</li>
+                        <li>Conciliação automática via webhook Asaas</li>
+                        <li>Indicadores: ticket médio, LTV, inadimplência, ocupação</li>
+                    </ul>
+                </div>
+                <div class="mockup">
+                    <img src="images/mockup-02-financeiro.png" alt="Painel Financeiro" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="mockup-placeholder" style="display:none;">[ MOCKUP 02<br>Painel Financeiro / Fluxo de Caixa ]</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 12. ALUNOS -->
+        <section>
+            <div class="split weighted-image">
+                <div class="mockup">
+                    <img src="images/mockup-03-alunos.png" alt="Gestão de Alunos" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="mockup-placeholder" style="display:none;">[ MOCKUP 03<br>Gestão de Alunos ]</div>
+                </div>
+                <div>
+                    <span class="badge purple">Módulo 03</span>
+                    <h2 style="margin-top:12px;">Gestão de Alunos</h2>
+                    <ul>
+                        <li>Cadastro completo + vínculo com turma e professor</li>
+                        <li>Planos: mensal, trimestral, pacote, day-use</li>
+                        <li>Histórico de presença, reposições e pagamentos</li>
+                        <li>Régua de relacionamento (boas-vindas, aniversário, recuperação)</li>
+                        <li>Score de risco de churn por aluno</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 13. ASAAS -->
+        <section>
+            <div class="split weighted-image">
+                <div>
+                    <span class="badge">Módulo 04</span>
+                    <h2 style="margin-top:12px;">Cobrança via Asaas</h2>
+                    <ul>
+                        <li>Recorrência automática a partir do plano do aluno</li>
+                        <li>Pix, boleto e cartão (parcelamento e recorrência)</li>
+                        <li>Régua de cobrança automática (lembrete, atraso, segunda via)</li>
+                        <li>Baixa automática via webhook</li>
+                        <li>Negativação opcional para inadimplentes crônicos</li>
+                    </ul>
+                </div>
+                <div class="mockup">
+                    <img src="images/mockup-04-cobranca-asaas.png" alt="Cobrança Asaas" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="mockup-placeholder" style="display:none;">[ MOCKUP 04<br>Cobrança e Faturas (Asaas) ]</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 14. AGENDAMENTO -->
+        <section>
+            <div class="split weighted-image">
+                <div class="mockup">
+                    <img src="images/mockup-05-agendamento.png" alt="Calendário de Agendamento" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="mockup-placeholder" style="display:none;">[ MOCKUP 05<br>Calendário de Quadras ]</div>
+                </div>
+                <div>
+                    <span class="badge green">Módulo 05</span>
+                    <h2 style="margin-top:12px;">Agendamento &amp; Reservas</h2>
+                    <ul>
+                        <li>Calendário visual por quadra (dia/semana/mês)</li>
+                        <li>Reserva para aulas regulares, avulsas e day-use</li>
+                        <li>Bloqueio de horários (manutenção, evento, clima)</li>
+                        <li>Lista de espera automática</li>
+                        <li>Notificações 24h e 2h antes</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 15. REPOSIÇÃO -->
+        <section>
+            <div class="split weighted-image">
+                <div>
+                    <span class="badge purple">Módulo 06</span>
+                    <h2 style="margin-top:12px;">Reposição de Aulas</h2>
+                    <ul>
+                        <li>Registro de falta com regra de antecedência configurável</li>
+                        <li>Crédito de reposição automático</li>
+                        <li>Aluno escolhe horário disponível sem intervenção da recepção</li>
+                        <li>Auditoria completa: quem faltou, repôs e saldo</li>
+                        <li>Política configurável por arena (limite, validade)</li>
+                    </ul>
+                </div>
+                <div class="mockup">
+                    <img src="images/mockup-06-reposicao.png" alt="Reposição de Aulas" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="mockup-placeholder" style="display:none;">[ MOCKUP 06<br>Reposição de Aulas ]</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 16. PORTAL ALUNO -->
+        <section>
+            <div class="split weighted-image">
+                <div class="mockup">
+                    <img src="images/mockup-07-portal-aluno.png" alt="Portal do Aluno" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="mockup-placeholder" style="display:none;">[ MOCKUP 07<br>Portal do Aluno (Mobile) ]</div>
+                </div>
+                <div>
+                    <span class="badge">Módulo 07</span>
+                    <h2 style="margin-top:12px;">Portal do Aluno</h2>
+                    <ul>
+                        <li>Login simples (e-mail/celular)</li>
+                        <li>Próximas aulas e saldo de reposições</li>
+                        <li>Agendamento e reposição self-service</li>
+                        <li>Faturas em aberto e segunda via</li>
+                        <li>Notificações push, WhatsApp e e-mail</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 17. ANTES vs DEPOIS -->
+        <section>
+            <h2>Melhorias de processo</h2>
+            <table class="compare">
+                <thead>
+                    <tr>
+                        <th>Hoje</th>
+                        <th>Com a plataforma</th>
+                        <th>Ganho estimado</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>Cobrança manual de mensalidades</td><td>Recorrência automática + régua Asaas</td><td class="gain">−30 a 50% inadimplência</td></tr>
+                    <tr><td>Agendamento por WhatsApp</td><td>Self-service no portal do aluno</td><td class="gain">−70% tempo da recepção</td></tr>
+                    <tr><td>Reposição em caderno</td><td>Crédito automático com regras</td><td class="gain">Zero conflitos</td></tr>
+                    <tr><td>Fechamento financeiro de 2 dias</td><td>Conciliação automática + DRE em tempo real</td><td class="gain">2 dias → minutos</td></tr>
+                    <tr><td>Visão fragmentada das arenas</td><td>Dashboard multi-arena consolidado</td><td class="gain">Decisão por dado</td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- 18. PERFORMANCE -->
+        <section>
+            <h2>Performance &amp; confiabilidade</h2>
+            <div class="card-grid four">
+                <div class="kpi card"><div class="value">&lt;2s</div><div class="label">Carregamento de telas em 4G</div></div>
+                <div class="kpi card"><div class="value">10k+</div><div class="label">Alunos ativos sem degradação</div></div>
+                <div class="kpi card"><div class="value">99,5%</div><div class="label">Disponibilidade alvo (SLA)</div></div>
+                <div class="kpi card"><div class="value">LGPD</div><div class="label">Conforme com criptografia + 2FA</div></div>
+            </div>
+            <p style="margin-top:1em; font-size:0.6em; color:var(--text-secondary); text-align:center;">
+                Arquitetura escalável horizontalmente, com integração nativa ao Asaas e WhatsApp Business.
+            </p>
+        </section>
+
+        <!-- 19. KPIs DE SUCESSO -->
+        <section>
+            <h2>Métricas de sucesso</h2>
+            <div class="split">
+                <div class="card">
+                    <h4 style="color:var(--neon-cyan);">DO PRODUTO</h4>
+                    <ul>
+                        <li>≥ 70% dos alunos logando 1x/mês</li>
+                        <li>≥ 60% das aulas agendadas pelo aluno em 6 meses</li>
+                        <li>≥ 95% das cobranças baixadas automaticamente</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h4 style="color:var(--neon-green);">DO NEGÓCIO</h4>
+                    <ul>
+                        <li>−30% de inadimplência em 90 dias</li>
+                        <li>+15% de ocupação das quadras</li>
+                        <li>−50% do tempo administrativo do gestor</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 20. ROADMAP -->
+        <section>
+            <h2>Roadmap proposto</h2>
+            <div class="roadmap">
+                <div class="phase">
+                    <div class="num">FASE 01 · 0-3 MESES</div>
+                    <h4>MVP</h4>
+                    <ul>
+                        <li>Cadastro multi-arena, alunos, planos</li>
+                        <li>Agendamento de aulas e quadras</li>
+                        <li>Integração Asaas (recorrência + conciliação)</li>
+                        <li>Portal do aluno (agendar, repor, pagar)</li>
+                        <li>Fluxo de caixa básico</li>
+                    </ul>
+                </div>
+                <div class="phase p2">
+                    <div class="num">FASE 02 · 3-6 MESES</div>
+                    <h4>Consolidação</h4>
+                    <ul>
+                        <li>Dashboard multi-arena consolidado</li>
+                        <li>Régua de cobrança avançada</li>
+                        <li>Integração WhatsApp Business</li>
+                        <li>Relatórios gerenciais</li>
+                        <li>App mobile nativo</li>
+                    </ul>
+                </div>
+                <div class="phase p3">
+                    <div class="num">FASE 03 · 6-12 MESES</div>
+                    <h4>Escala</h4>
+                    <ul>
+                        <li>Score de churn e retenção</li>
+                        <li>Split de pagamento p/ professores</li>
+                        <li>Marketplace de torneios</li>
+                        <li>Integrações contábeis</li>
+                        <li>BI avançado e IA preditiva</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- 21. PRÓXIMOS PASSOS -->
+        <section>
+            <h2>Próximos passos</h2>
+            <div class="card-grid four">
+                <div class="card"><h4>01</h4><p><strong>Validação do PRD</strong> — alinhamento de escopo e prioridades.</p></div>
+                <div class="card"><h4>02</h4><p><strong>Workshop de descoberta</strong> — mapear regras das suas arenas.</p></div>
+                <div class="card"><h4>03</h4><p><strong>Aprovação do MVP</strong> e cronograma definitivo.</p></div>
+                <div class="card"><h4>04</h4><p><strong>Setup de ambiente</strong> e início do desenvolvimento.</p></div>
+            </div>
+            <div style="margin-top:32px; text-align:center;" class="hero-quote">
+                Pronto para transformar a gestão das suas arenas em uma <span class="highlight-green">vantagem competitiva</span>?
+            </div>
+        </section>
+
+        <!-- 22. CONTATO -->
+        <section class="cover">
+            <div>
+                <div class="eyebrow">Vamos conversar</div>
+                <h1 style="font-size:2.2em;">Obrigado!</h1>
+                <div class="subtitle" style="margin-top:2em;">
+                    <strong style="color:var(--neon-cyan);">Fernando Almeida</strong> · Head de Tecnologia e IA<br>
+                    <small>[seu-email@dominio.com] · [+55 00 00000-0000] · [linkedin.com/in/seu-perfil]</small>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        hash: true,
+        slideNumber: 'c/t',
+        transition: 'fade',
+        controls: true,
+        progress: true,
+        center: false,
+        width: 1400,
+        height: 900,
+        margin: 0.06
+    });
+</script>
+
+</body>
+</html>
