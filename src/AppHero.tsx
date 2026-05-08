@@ -1075,14 +1075,14 @@ function AppHero() {
                     <div className="text-[0.6rem] uppercase tracking-widest text-zinc-500">Implantação</div>
                     <div className="text-[0.55rem] font-mono text-zinc-600">único</div>
                   </div>
-                  <div className={`font-display text-3xl font-semibold tabular-nums tracking-tight transition-all duration-500 ${!showPrices ? 'blur-md select-none' : ''}`}>R$ 35.000</div>
+                  <div className={`font-display text-3xl font-semibold tabular-nums tracking-tight transition-all duration-500 ${!showPrices ? 'blur-md select-none' : ''}`}>R$ 10.000</div>
                   <div className="h-px bg-zinc-800 my-3" />
                   <div className="flex items-baseline justify-between mb-1">
                     <div className="text-[0.6rem] uppercase tracking-widest text-zinc-500">Mensalidade</div>
                     <div className="text-[0.55rem] font-mono text-zinc-600">recorrente</div>
                   </div>
                   <div className={`font-display text-2xl font-semibold tabular-nums tracking-tight transition-all duration-500 ${!showPrices ? 'blur-md select-none' : ''}`}>
-                    R$ 1.490<span className="text-sm text-zinc-500 font-normal ml-1">/mês</span>
+                    R$ 745<span className="text-sm text-zinc-500 font-normal ml-1">/mês</span>
                   </div>
                 </div>
 
@@ -1136,14 +1136,14 @@ function AppHero() {
                     <div className="text-[0.6rem] uppercase tracking-widest text-blue-300">Implantação</div>
                     <div className="text-[0.55rem] font-mono text-zinc-500">único</div>
                   </div>
-                  <div className={`font-display text-3xl font-semibold tabular-nums tracking-tight text-white transition-all duration-500 ${!showPrices ? 'blur-md select-none' : ''}`}>R$ 65.000</div>
+                  <div className={`font-display text-3xl font-semibold tabular-nums tracking-tight text-white transition-all duration-500 ${!showPrices ? 'blur-md select-none' : ''}`}>R$ 15.000</div>
                   <div className="h-px bg-[#1f3dbc]/30 my-3" />
                   <div className="flex items-baseline justify-between mb-1">
                     <div className="text-[0.6rem] uppercase tracking-widest text-blue-300">Mensalidade</div>
                     <div className="text-[0.55rem] font-mono text-zinc-500">recorrente</div>
                   </div>
                   <div className={`font-display text-2xl font-semibold tabular-nums tracking-tight text-white transition-all duration-500 ${!showPrices ? 'blur-md select-none' : ''}`}>
-                    R$ 2.490<span className="text-sm text-zinc-500 font-normal ml-1">/mês</span>
+                    R$ 1.245<span className="text-sm text-zinc-500 font-normal ml-1">/mês</span>
                   </div>
                 </div>
 
