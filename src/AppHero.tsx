@@ -476,8 +476,15 @@ function AppHero() {
         <div className="relative z-10 h-full flex items-center px-12 md:px-24">
           <div className="max-w-6xl mx-auto w-full grid md:grid-cols-[0.85fr_1.4fr] gap-20 items-center">
             <div className="animate-item flex flex-col items-start">
-              <div className="w-44 h-44 rounded-full bg-zinc-900 border border-zinc-800 flex items-center justify-center text-5xl font-display font-semibold text-white mb-6">
-                FA
+              <div className="relative w-44 h-44 mb-6 group">
+                <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-[#1f3dbc] via-[#22d3ee]/40 to-transparent opacity-60 blur-md group-hover:opacity-90 transition-opacity" />
+                <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-zinc-800 group-hover:border-[#1f3dbc]/50 transition-colors shadow-[0_20px_60px_rgba(0,0,0,0.5)]">
+                  <img
+                    src="/images/fernando.jpg"
+                    alt="Fernando Almeida"
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  />
+                </div>
               </div>
               <Eyebrow>Head Tech & IA</Eyebrow>
               <h2 className="font-display text-2xl font-semibold mt-2">Fernando Almeida</h2>
